@@ -1,0 +1,26 @@
+services:
+  rustdesk-api:
+    container_name: rustdesk-api-2
+    ports:
+      - 21114:21114
+    image: lejianwen/rustdesk-api
+    environment:
+      - TZ=Asia/Shanghai
+      - RUSTDESK_API_LANG=en
+      - RUSTDESK_API_APP_REGISTER=True
+      - RUSTDESK_API_RUSTDESK_ID_SERVER=127.0.0.1:21116
+      - RUSTDESK_API_RUSTDESK_RELAY_SERVER=127.0.0.1:21117
+      - RUSTDESK_API_RUSTDESK_API_SERVER=http://127.0.0.1:21114
+      - RUSTDESK_API_GORM_TYPE=mysql
+      - RUSTDESK_API_MYSQL_ADDR=1Panel-mysql-mu8r:3306
+      - RUSTDESK_API_MYSQL_USERNAME=zhaojieying
+      - RUSTDESK_API_MYSQL_PASSWORD=12345678z
+      - RUSTDESK_API_MYSQL_DBNAME=rustdesk_api_2
+    volumes:
+      - /data/rustdesk/api:/app/data
+    networks:
+      - 1panel-network
+    restart: unless-stopped
+networks:
+    1panel-network:
+        external: true

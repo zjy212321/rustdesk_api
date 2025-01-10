@@ -1,0 +1,58 @@
+lang: "zh-CN"
+app:
+  web-client: 1  # 1:启用 0:禁用
+  register: false #是否开启注册
+  show-swagger: 0 # 1:启用 0:禁用
+admin:
+  title: "RustDesk Api Admin"
+  hello-file: "./conf/admin/hello.html"  #优先使用file
+  hello: ""
+gin:
+  api-addr: "0.0.0.0:21114"
+  mode: "release" #release,debug,test
+  resources-path: 'resources'  #对外静态文件目录
+  trust-proxy: ""
+gorm:
+  type: "sqlite"
+  max-idle-conns: 10
+  max-open-conns: 100
+mysql:
+  username: ""
+  password: ""
+  addr: ""
+  dbname: ""
+rustdesk:
+  id-server: "192.168.1.66:21116"
+  relay-server: "192.168.1.66:21117"
+  api-server: "http://127.0.0.1:21114"
+  key: ""
+  key-file: "./conf/data/id_ed25519.pub"
+  personal: 1
+  webclient-magic-queryonline: 0
+logger:
+  path: "./runtime/log.txt"
+  level: "warn" #trace,debug,info,warn,error,fatal
+  report-caller: true
+proxy:
+  enable: false
+  host: "http://127.0.0.1:1080"
+redis:
+  addr: "127.0.0.1:6379"
+  password: ""
+  db: 0
+cache:
+  type: "file"
+  file-dir: "./runtime/cache"
+  redis-addr: "127.0.0.1:6379"
+  redis-pwd: ""
+  redis-db: 0
+oss:
+  access-key-id: ""
+  access-key-secret: ""
+  host: ""
+  callback-url: ""
+  expire-time: 30
+  max-byte: 10240
+jwt:
+  private-key: "./conf/jwt_pri.pem"
+  expire-duration: 360000
