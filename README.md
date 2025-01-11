@@ -204,12 +204,6 @@ proxy:
 ### 运行
 
 #### docker运行
-制作docker image
-先运行`build.sh`,编译后会在`release`
-在项目根目录下创建文件夹amd64，并将release文件夹复制到amd64文件夹下
-docker build -t zjy/rustdesk-api --build-arg BUILDARCH=amd64 .
-
-
 
 1. 直接docker运行,配置可以通过挂载配置文件`/app/conf/config.yaml`来修改,或者通过环境变量覆盖配置文件中的配置
 
@@ -266,6 +260,14 @@ docker build -t zjy/rustdesk-api --build-arg BUILDARCH=amd64 .
     ```
 5. 编译，如果想自己编译,先cd到项目根目录，然后windows下直接运行`build.bat`,linux下运行`build.sh`,编译后会在`release`
    目录下生成对应的可执行文件。直接运行编译后的可执行文件即可。
+
+   在项目根目录下创建文件夹`amd64`，并将`release`文件夹复制到`amd64`文件夹下
+   可以根据Dockerfile创建镜像：
+   ```bash
+   docker build -t {your-image-name} --build-arg BUILDARCH=amd64 .
+   ```
+   或者直接通过`docker-compose.yaml`创建容器
+
 
 6. 打开浏览器访问`http://<your server[:port]>/_admin/`，默认用户名密码为`admin`，请及时更改密码。
 

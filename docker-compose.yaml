@@ -1,9 +1,14 @@
 services:
   rustdesk-api:
-    container_name: rustdesk-api-2
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILDARCH: amd64
+    # image: zjy/rustdesk-api
+    container_name: rustdesk-api
     ports:
       - 21114:21114
-    image: lejianwen/rustdesk-api
     environment:
       - TZ=Asia/Shanghai
       - RUSTDESK_API_LANG=en
